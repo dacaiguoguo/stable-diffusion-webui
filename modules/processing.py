@@ -726,6 +726,8 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
         "Seed": p.all_seeds[0] if use_main_prompt else all_seeds[index],
         "Face restoration": opts.face_restoration_model if p.restore_faces else None,
         "Size": f"{p.width}x{p.height}",
+        "SizeWidth": f"{p.width}",
+        "SizeHeight": f"{p.height}",
         "Model hash": p.sd_model_hash if opts.add_model_hash_to_info else None,
         "Model": p.sd_model_name if opts.add_model_name_to_info else None,
         "FP8 weight": opts.fp8_storage if devices.fp8 else None,
@@ -748,14 +750,19 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
         **p.extra_generation_params,
         "Version": program_version() if opts.add_version_to_infotext else None,
         "User": p.user if opts.add_user_name_to_info else None,
+        "prompt_text" : p.main_prompt if use_main_prompt else all_prompts[index],
+        "negative_prompt" : f"{p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
     }
-
+    print("generation_params")
+    print(generation_params)
     generation_params_text = ", ".join([k if k == v else f'{k}: {infotext_utils.quote(v)}' for k, v in generation_params.items() if v is not None])
 
     prompt_text = p.main_prompt if use_main_prompt else all_prompts[index]
     negative_prompt_text = f"\nNegative prompt: {p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
-
-    return f"{prompt_text}{negative_prompt_text}\n{generation_params_text}".strip()
+    # return f"{generation_params}".strip()
+    generation_params_json = json.dumps(generation_params)
+    return generation_params_json
+    # return f"{prompt_text}{negative_prompt_text}\n{generation_params_text}".strip()
 
 
 def process_images(p: StableDiffusionProcessing) -> Processed:

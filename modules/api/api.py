@@ -345,6 +345,8 @@ class Api:
 
         # Now check for always on scripts
         if request.alwayson_scripts:
+            print("alwayson_script")
+            print(request.alwayson_scripts)
             for alwayson_script_name in request.alwayson_scripts.keys():
                 alwayson_script = self.get_script(alwayson_script_name, script_runner)
                 if alwayson_script is None:

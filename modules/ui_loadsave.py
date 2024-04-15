@@ -137,6 +137,7 @@ class UiLoadsave:
             self.add_component(f"{path}/{x.value}", x)
 
     def read_from_file(self):
+        print(f"self.filename, {self.filename}")
         with open(self.filename, "r", encoding="utf8") as file:
             return json.load(file)
 

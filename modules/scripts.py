@@ -503,7 +503,7 @@ def load_scripts():
     script_callbacks.clear_callbacks()
 
     scripts_list = list_scripts("scripts", ".py") + list_scripts("modules/processing_scripts", ".py", include_extensions=False)
-
+    
     syspath = sys.path
 
     def register_scripts_from_module(module):
@@ -637,7 +637,7 @@ class ScriptRunner:
 
         controls = wrap_call(script.ui, script.filename, "ui", script.is_img2img)
         script.controls = controls
-
+        print(f"script.controls: {script.controls}")
         if controls is None:
             return
 
@@ -647,6 +647,7 @@ class ScriptRunner:
 
         for control in controls:
             control.custom_script_source = os.path.basename(script.filename)
+            print(f"script.controlslabel: {control.label}")
 
             arg_info = api_models.ScriptArg(label=control.label or "")
 
@@ -781,6 +782,7 @@ class ScriptRunner:
         for script in self.alwayson_scripts:
             try:
                 script_args = p.script_args[script.args_from:script.args_to]
+                print(f"dacaiguguoguoscript{script}.args_from:{script.args_from}, script.args_to:{script.args_to}")
                 script.process(p, *script_args)
             except Exception:
                 errors.report(f"Error running process: {script.filename}", exc_info=True)
@@ -907,6 +909,10 @@ class ScriptRunner:
             args_from = script.args_from
             args_to = script.args_to
             filename = script.filename
+            print(f"dacaiguoguo sss: {script}, 文件名: {si}")
+            stack = inspect.stack()
+            for frame in stack:
+                print(f"dacaiguoguo函数名: {frame.function}, 文件名: {frame.filename}, 行号: {frame.lineno}")
 
             module = cache.get(filename, None)
             if module is None:
@@ -935,6 +941,9 @@ class ScriptRunner:
 
             try:
                 script_args = p.script_args[script.args_from:script.args_to]
+                print("script_args222111")
+                print(script_args)
+                print(script)
                 script.setup(p, *script_args)
             except Exception:
                 errors.report(f"Error running setup: {script.filename}", exc_info=True)

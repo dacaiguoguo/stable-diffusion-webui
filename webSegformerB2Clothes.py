@@ -30,9 +30,10 @@ color_mapping = {
 processor = SegformerImageProcessor.from_pretrained("mattmdjaga/segformer_b2_clothes")
 model = AutoModelForSemanticSegmentation.from_pretrained("mattmdjaga/segformer_b2_clothes")
 
-url = "https://plus.unsplash.com/premium_photo-1673210886161-bfcc40f54d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29uJTIwc3RhbmRpbmd8ZW58MHx8MHx8&w=1000&q=80"
-url = "http://127.0.0.1:9090/Business.jpg"
-image = Image.open(requests.get(url, stream=True).raw)
+# url = "http://127.0.0.1:9090/Business.jpg"
+# image = Image.open(requests.get(url, stream=True).raw)
+image = Image.open("/Users/yanguosun/Developer/aistudyGio/iphone-card-50-specialist-help-202309.jpeg")
+
 inputs = processor(images=image, return_tensors="pt")
 
 outputs = model(**inputs)
@@ -50,8 +51,15 @@ pred_seg = upsampled_logits.argmax(dim=1)[0]
 
 import numpy as np
 
+# 需要排除的类别标签
+exclude_labels = [2, 11]
+
 # 创建一个空的彩色图像，大小和 pred_seg 一样，但是有三个颜色通道
 color_seg = np.zeros((pred_seg.shape[0], pred_seg.shape[1], 3), dtype=np.uint8)
+
+# 将需要排除的标签对应的像素设置为背景色（这里假设背景色是黑色）
+for label in exclude_labels:
+    color_mapping.pop(label, None)  # 移除不需要的标签颜色映射
 
 # 应用颜色映射
 for label, color in color_mapping.items():

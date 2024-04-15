@@ -752,18 +752,20 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
         "User": p.user if opts.add_user_name_to_info else None,
         "prompt_text" : p.main_prompt if use_main_prompt else all_prompts[index],
         "negative_prompt" : f"{p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
+        # "script_args11": p.script_args
     }
-    print("generation_params")
-    print(generation_params)
-    generation_params_text = ", ".join([k if k == v else f'{k}: {infotext_utils.quote(v)}' for k, v in generation_params.items() if v is not None])
 
-    prompt_text = p.main_prompt if use_main_prompt else all_prompts[index]
-    negative_prompt_text = f"\nNegative prompt: {p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
-    # return f"{generation_params}".strip()
+    print("generation_params111p.script_args")
+    print(p.script_args)
+    # print(generation_params)
+    # generation_params_text = ", ".join([k if k == v else f'{k}: {infotext_utils.quote(v)}' for k, v in generation_params.items() if v is not None])
+
+    # prompt_text = p.main_prompt if use_main_prompt else all_prompts[index]
+    # negative_prompt_text = f"\nNegative prompt: {p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
+    
+    # return f"{prompt_text}{negative_prompt_text}\n{generation_params_text}".strip()
     generation_params_json = json.dumps(generation_params)
     return generation_params_json
-    # return f"{prompt_text}{negative_prompt_text}\n{generation_params_text}".strip()
-
 
 def process_images(p: StableDiffusionProcessing) -> Processed:
     if p.scripts is not None:

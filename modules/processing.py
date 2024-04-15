@@ -756,7 +756,10 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
     }
 
     print("generation_params111p.script_args")
-    print(p.script_args)
+    print(p.scripts)
+    # <modules.scripts.ScriptRunner object at 0x37c385270>
+    # for k in p.scripts:
+    #     print(f"kkkscript.controls: {k.controls}")
     # print(generation_params)
     # generation_params_text = ", ".join([k if k == v else f'{k}: {infotext_utils.quote(v)}' for k, v in generation_params.items() if v is not None])
 

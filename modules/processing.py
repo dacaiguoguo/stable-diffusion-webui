@@ -718,6 +718,38 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
     if uses_ensd:
         uses_ensd = sd_samplers_common.is_sampler_using_eta_noise_seed_delta(p)
 
+    def safe_serialize(obj):
+        try:
+            # 尝试使用 json 默认的方式序列化
+            return json.dumps(obj)
+        except TypeError:
+            # 如果无法序列化，返回一个基本类型的替代表示
+            return str(obj)
+
+    results = {}
+
+    for k in p.scripts.scripts:
+        script_info = {
+            'controls': [],
+            'args_from': k.args_from,
+            'args_to': k.args_to,
+            'args': []
+        }
+
+        if k.controls is not None:
+            for j in k.controls:
+                control_info = {'label': j.label}
+                script_info['controls'].append(control_info)
+        else:
+            script_info['controls'].append("No controls to iterate over.")
+
+        script_args = [safe_serialize(arg) for arg in p.script_args[k.args_from:k.args_to]]
+        script_info['args'] = script_args
+
+        results[k.name] = script_info
+
+    # script_json = json.dumps(results, indent=4)
+
     generation_params = {
         "Steps": p.steps,
         "Sampler": p.sampler_name,
@@ -751,92 +783,14 @@ def create_infotext(p, all_prompts, all_seeds, all_subseeds, comments=None, iter
         "Version": program_version() if opts.add_version_to_infotext else None,
         "User": p.user if opts.add_user_name_to_info else None,
         "prompt_text" : p.main_prompt if use_main_prompt else all_prompts[index],
-        "negative_prompt" : f"{p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else ""
-        # "script_args11": p.script_args
+        "negative_prompt" : f"{p.main_negative_prompt if use_main_prompt else all_negative_prompts[index]}" if all_negative_prompts[index] else "",
+        "script_json": results
     }
 
     print("generation_params111p.script_args")
     # import json
 
-    def safe_serialize(obj):
-        try:
-            # 尝试使用 json 默认的方式序列化
-            return json.dumps(obj)
-        except TypeError:
-            # 如果无法序列化，返回一个基本类型的替代表示
-            return str(obj)
 
-    results = {}
-
-    for k in p.scripts.scripts:
-        script_info = {
-            'controls': [],
-            'args_from': k.args_from,
-            'args_to': k.args_to,
-            'args': []
-        }
-
-        if k.controls is not None:
-            for j in k.controls:
-                control_info = {'label': j.label}
-                script_info['controls'].append(control_info)
-        else:
-            script_info['controls'].append("No controls to iterate over.")
-
-        script_args = [safe_serialize(arg) for arg in p.script_args[k.args_from:k.args_to]]
-        script_info['args'] = script_args
-
-        results[k.name] = script_info
-
-    json_output = json.dumps(results, indent=4)
-    print(json_output)
-    # def default_serializer(obj):
-    #     if isinstance(obj, Image):
-    #         return "image"  # 如果是图像对象，返回字符串 "image"
-    #     # 检查对象是否具有特定的属性
-    #     if hasattr(obj, 'control_mode'):
-    #         return {"module": getattr(obj, 'module', None), "model": getattr(obj, 'model', None)}
-    #     raise TypeError(f"Object of type {obj.__class__.__name__} is not JSON serializable")
-    #
-    # results = {}  # 初始化用于存放结果的字典
-    #
-    # for k in p.scripts.scripts:
-    #     script_info = {
-    #         'controls': [],
-    #         'args_from': k.args_from,
-    #         'args_to': k.args_to,
-    #         'args': []
-    #     }
-    #
-    #     if k.controls is not None:
-    #         for j in k.controls:
-    #             script_info['controls'].append(j.label)
-    #     else:
-    #         script_info['controls'].append("No controls to iterate over.")
-    #
-    #     script_args = p.script_args[k.args_from:k.args_to]
-    #     script_info['args'] = script_args
-    #
-    #     # 将每个脚本的信息添加到结果字典中
-    #     results[k.name] = script_info
-    #
-    # # 将结果字典转换为 JSON 字符串
-    # json_output = json.dumps(results, indent=4, default=default_serializer)
-    # print(json_output)
-    # print(p.scripts.scripts)
-    # # <modules.scripts.ScriptRunner object at 0x37c385270>
-    # for k in p.scripts.scripts:
-    #     print(f"kkkscript.controls: {k.name}")
-    #     if k.controls is not None:  # 检查是否为 None
-    #         for j in k.controls:
-    #             print(f"ffff {j.label}")
-    #     else:
-    #         print("No controls to iterate over.")
-
-    #     script_args = p.script_args[k.args_from:k.args_to]
-    #     print(f"dacaiguguoguo888script{k.name}.args_from:{k.args_from}, script.args_to:{k.args_to}, value:{script_args}")
-
-    # print(generation_params)
     # generation_params_text = ", ".join([k if k == v else f'{k}: {infotext_utils.quote(v)}' for k, v in generation_params.items() if v is not None])
 
     # prompt_text = p.main_prompt if use_main_prompt else all_prompts[index]

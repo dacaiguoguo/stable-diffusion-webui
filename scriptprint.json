@@ -1,0 +1,508 @@
+{
+    "prompt matrix": {
+        "controls": [
+            {
+                "label": "Put variable parts at start of prompt"
+            },
+            {
+                "label": "Use different seed for each picture"
+            },
+            {
+                "label": "Select prompt"
+            },
+            {
+                "label": "Select joining char"
+            },
+            {
+                "label": "Grid margins (px)"
+            }
+        ],
+        "args_from": 67,
+        "args_to": 72,
+        "args": [
+            "false",
+            "false",
+            "\"positive\"",
+            "\"comma\"",
+            "0"
+        ]
+    },
+    "prompts from file or textbox": {
+        "controls": [
+            {
+                "label": "Iterate seed every line"
+            },
+            {
+                "label": "Use same random seed for all lines"
+            },
+            {
+                "label": "Insert prompts at the"
+            },
+            {
+                "label": "List of prompt inputs"
+            }
+        ],
+        "args_from": 72,
+        "args_to": 76,
+        "args": [
+            "false",
+            "false",
+            "\"start\"",
+            "\"\""
+        ]
+    },
+    "x/y/z plot": {
+        "controls": [
+            {
+                "label": "X type"
+            },
+            {
+                "label": "X values"
+            },
+            {
+                "label": "X values"
+            },
+            {
+                "label": "Y type"
+            },
+            {
+                "label": "Y values"
+            },
+            {
+                "label": "Y values"
+            },
+            {
+                "label": "Z type"
+            },
+            {
+                "label": "Z values"
+            },
+            {
+                "label": "Z values"
+            },
+            {
+                "label": "Draw legend"
+            },
+            {
+                "label": "Include Sub Images"
+            },
+            {
+                "label": "Include Sub Grids"
+            },
+            {
+                "label": "Keep -1 for seeds"
+            },
+            {
+                "label": "Vary seeds for X"
+            },
+            {
+                "label": "Vary seeds for Y"
+            },
+            {
+                "label": "Vary seeds for Z"
+            },
+            {
+                "label": "Grid margins (px)"
+            },
+            {
+                "label": "Use text inputs instead of dropdowns"
+            }
+        ],
+        "args_from": 76,
+        "args_to": 94,
+        "args": [
+            "1",
+            "\"\"",
+            "[]",
+            "0",
+            "\"\"",
+            "[]",
+            "0",
+            "\"\"",
+            "[]",
+            "true",
+            "false",
+            "false",
+            "false",
+            "false",
+            "false",
+            "false",
+            "0",
+            "false"
+        ]
+    },
+    "extra options": {
+        "controls": [],
+        "args_from": 10,
+        "args_to": 10,
+        "args": []
+    },
+    "Hypertile": {
+        "controls": [
+            "No controls to iterate over."
+        ],
+        "args_from": 10,
+        "args_to": 10,
+        "args": []
+    },
+    "null": {
+        "controls": [
+            "No controls to iterate over."
+        ],
+        "args_from": 67,
+        "args_to": 67,
+        "args": []
+    },
+    "additional networks for generating": {
+        "controls": [
+            {
+                "label": "Enable"
+            },
+            {
+                "label": "Separate UNet/Text Encoder weights"
+            },
+            {
+                "label": "Network module 1"
+            },
+            {
+                "label": "Model 1"
+            },
+            {
+                "label": "UNet Weight 1"
+            },
+            {
+                "label": "TEnc Weight 1"
+            },
+            {
+                "label": "Network module 2"
+            },
+            {
+                "label": "Model 2"
+            },
+            {
+                "label": "UNet Weight 2"
+            },
+            {
+                "label": "TEnc Weight 2"
+            },
+            {
+                "label": "Network module 3"
+            },
+            {
+                "label": "Model 3"
+            },
+            {
+                "label": "UNet Weight 3"
+            },
+            {
+                "label": "TEnc Weight 3"
+            },
+            {
+                "label": "Network module 4"
+            },
+            {
+                "label": "Model 4"
+            },
+            {
+                "label": "UNet Weight 4"
+            },
+            {
+                "label": "TEnc Weight 4"
+            },
+            {
+                "label": "Network module 5"
+            },
+            {
+                "label": "Model 5"
+            },
+            {
+                "label": "UNet Weight 5"
+            },
+            {
+                "label": "TEnc Weight 5"
+            },
+            {
+                "label": "mask image:"
+            },
+            {
+                "label": null
+            }
+        ],
+        "args_from": 10,
+        "args_to": 34,
+        "args": [
+            "false",
+            "false",
+            "\"LoRA\"",
+            "\"None\"",
+            "1",
+            "1",
+            "\"LoRA\"",
+            "\"None\"",
+            "1",
+            "1",
+            "\"LoRA\"",
+            "\"None\"",
+            "1",
+            "1",
+            "\"LoRA\"",
+            "\"None\"",
+            "1",
+            "1",
+            "\"LoRA\"",
+            "\"None\"",
+            "1",
+            "1",
+            "null",
+            "\"Refresh models\""
+        ]
+    },
+    "controlnet": {
+        "controls": [
+            {
+                "label": null
+            },
+            {
+                "label": null
+            },
+            {
+                "label": null
+            }
+        ],
+        "args_from": 34,
+        "args_to": 37,
+        "args": [
+            "UiControlNetUnit(enabled=False, module='none', model='None', weight=1, image=None, resize_mode='Crop and Resize', low_vram=False, processor_res=-1, threshold_a=-1, threshold_b=-1, guidance_start=0, guidance_end=1, pixel_perfect=False, control_mode='Balanced', inpaint_crop_input_image=False, hr_option='Both', save_detected_map=True, advanced_weighting=None)",
+            "UiControlNetUnit(enabled=False, module='none', model='None', weight=1, image=None, resize_mode='Crop and Resize', low_vram=False, processor_res=-1, threshold_a=-1, threshold_b=-1, guidance_start=0, guidance_end=1, pixel_perfect=False, control_mode='Balanced', inpaint_crop_input_image=False, hr_option='Both', save_detected_map=True, advanced_weighting=None)",
+            "UiControlNetUnit(enabled=False, module='none', model='None', weight=1, image=None, resize_mode='Crop and Resize', low_vram=False, processor_res=-1, threshold_a=-1, threshold_b=-1, guidance_start=0, guidance_end=1, pixel_perfect=False, control_mode='Balanced', inpaint_crop_input_image=False, hr_option='Both', save_detected_map=True, advanced_weighting=None)"
+        ]
+    },
+    "controlnet m2m": {
+        "controls": [
+            {
+                "label": null
+            },
+            {
+                "label": null
+            },
+            {
+                "label": "Save preprocessed"
+            },
+            {
+                "label": null
+            },
+            {
+                "label": null
+            },
+            {
+                "label": "Save preprocessed"
+            },
+            {
+                "label": null
+            },
+            {
+                "label": null
+            },
+            {
+                "label": "Save preprocessed"
+            },
+            {
+                "label": "Duration"
+            }
+        ],
+        "args_from": 94,
+        "args_to": 104,
+        "args": [
+            "null",
+            "null",
+            "false",
+            "null",
+            "null",
+            "false",
+            "null",
+            "null",
+            "false",
+            "50"
+        ]
+    },
+    "reactor": {
+        "controls": [
+            {
+                "label": "Single Source Image"
+            },
+            {
+                "label": "ReActor"
+            },
+            {
+                "label": "Comma separated face number(s); Example: 0,2,1"
+            },
+            {
+                "label": "Comma separated face number(s); Example: 1,0,2"
+            },
+            {
+                "label": "Model"
+            },
+            {
+                "label": "Restore Face"
+            },
+            {
+                "label": "Restore Face Visibility"
+            },
+            {
+                "label": "1. Restore Face -> 2. Upscale (-Uncheck- if you want vice versa)"
+            },
+            {
+                "label": "Upscaler"
+            },
+            {
+                "label": "Scale by"
+            },
+            {
+                "label": "Upscaler Visibility (if scale = 1)"
+            },
+            {
+                "label": "Swap in source image"
+            },
+            {
+                "label": "Swap in generated image"
+            },
+            {
+                "label": "Console Log Level"
+            },
+            {
+                "label": "Gender Detection (Source)"
+            },
+            {
+                "label": "Gender Detection (Target)"
+            },
+            {
+                "label": "Save Original"
+            },
+            {
+                "label": "CodeFormer Weight (Fidelity)"
+            },
+            {
+                "label": "Source Image Hash Check"
+            },
+            {
+                "label": "Target Image Hash Check"
+            },
+            {
+                "label": "Execution Provider"
+            },
+            {
+                "label": "Face Mask Correction"
+            },
+            {
+                "label": "Select Source"
+            },
+            {
+                "label": "Choose Face Model"
+            },
+            {
+                "label": "Source Folder"
+            },
+            {
+                "label": "Multiple Source Images"
+            },
+            {
+                "label": "Random Image"
+            },
+            {
+                "label": "Force Upscale"
+            },
+            {
+                "label": "Threshold"
+            },
+            {
+                "label": "Max Faces"
+            }
+        ],
+        "args_from": 37,
+        "args_to": 67,
+        "args": [
+            "<PIL.Image.Image image mode=RGB size=512x640 at 0x3D3379890>",
+            "true",
+            "\"0\"",
+            "\"0\"",
+            "\"inswapper_128.onnx\"",
+            "\"CodeFormer\"",
+            "1",
+            "true",
+            "\"None\"",
+            "1",
+            "1",
+            "false",
+            "true",
+            "1",
+            "0",
+            "0",
+            "false",
+            "0.5",
+            "true",
+            "false",
+            "\"CPU\"",
+            "false",
+            "0",
+            "\"None\"",
+            "\"\"",
+            "null",
+            "false",
+            "false",
+            "0.5",
+            "0"
+        ]
+    },
+    "refiner": {
+        "controls": [
+            {
+                "label": "Refiner"
+            },
+            {
+                "label": "Checkpoint"
+            },
+            {
+                "label": "Switch at"
+            }
+        ],
+        "args_from": 1,
+        "args_to": 4,
+        "args": [
+            "false",
+            "\"\"",
+            "0.8"
+        ]
+    },
+    "seed": {
+        "controls": [
+            {
+                "label": "Seed"
+            },
+            {
+                "label": "Extra"
+            },
+            {
+                "label": "Variation seed"
+            },
+            {
+                "label": "Variation strength"
+            },
+            {
+                "label": "Resize seed from width"
+            },
+            {
+                "label": "Resize seed from height"
+            }
+        ],
+        "args_from": 4,
+        "args_to": 10,
+        "args": [
+            "-1",
+            "false",
+            "-1",
+            "0",
+            "0",
+            "0"
+        ]
+    }
+}
